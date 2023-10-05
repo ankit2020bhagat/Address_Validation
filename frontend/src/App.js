@@ -55,17 +55,25 @@ function App() {
     }
   };
   const findDuplicates = (inputValues) => {
-    const uniqueValues = new Set();
     const duplicates = [];
+    const unique = Array.from(new Set(inputValues));
+    for (let j = 0; j < unique.length; j++) {
+      let elementToFind = unique[j]; // Change this to the element you want to find
 
-    inputValues.forEach((value, index) => {
-      if (uniqueValues.has(value)) {
-        duplicates.push(`${value} duplicates in line ${index + 1}`);
-      } else {
-        uniqueValues.add(value);
+      let duplicateIndices = [];
+      for (let i = 0; i < inputValues.length; i++) {
+        if (inputValues[i] === elementToFind) {
+          duplicateIndices.push(i + 1);
+        }
       }
-    });
-
+      if (duplicateIndices.length > 1) {
+        duplicates.push(
+          `"${elementToFind}" duplicates in line: ${duplicateIndices.join(
+            ", "
+          )}`
+        );
+      }
+    }
     return duplicates;
   };
 
