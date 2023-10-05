@@ -1,4 +1,4 @@
-# My React Application
+# Addess_Validation
 
 A simple React application for processing and validating Ethereum addresses and balances.
 
